@@ -1,46 +1,31 @@
-# Workflow
+# Welcome to the GL ProCamp project
 
-1. Checkout to master branch
+## Description
 
-    ```
-    git checkout master
-    ```
+The project contains UI and API tests for [CosmosID](https://www.cosmosid.com/)
 
-2. Get latest code from master
+##Instruments used:
 
-    ```
-    git pull origin master
-    ```
+* Selenium Webdriver
 
-3. Create feature branch for your code
+* Pytest
 
-    ```
-    git checkout -b <descriptive_feature_name>
-    ```
+* Allure
 
-    Where:
-    `<descriptive_feature_name>` - human-readable name of new feature (allowed symbols - `[a-zA-Z0-9\-]`)
+## Requirements
 
+* Python 3.6+
 
-4. Commit your code to this new feature branch
+* Packages from requirements.txt
 
-    ```
-    git commit -m "<descriptive_feature_name>"
-    ```
+## How to run tests
 
-    Where:
-    `<descriptive_feature_name>` - human-readable name of new feature or descriptive change name
+* Clone the project
 
+Before, make sure there is an [SSH key](https://gitlab.com/profile/keys) in your profile in Gitlab.
 
-5. Push to repository
+`git clone git@github.com:Rybintseva/gl_pro_camp.gitt`
 
-    ```
-    git push origin <feature_branch_name>
-    ```
+* Run tests in terminal
 
-    Where:
-
-    `<feature_branch_name>` - name of your new feature branch created in item 3
-
-
-6. Create merge request to dev branch on GitLab.
+`pytest tests/tests_ui/test_mainpage.py`
