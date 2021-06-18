@@ -3,7 +3,7 @@ from urllib.parse import urljoin
 from requests import Session
 
 from core.logger import LOGGER
-from core.settings import BASE_API_URL
+from core.settings import BASE_API_URL, OK
 
 
 class ApiClient:
@@ -41,9 +41,10 @@ class ApiClient:
         result = self.request('POST', location, headers, expected_status=expected_status)
         return result
 
-    def get_files_number(self, location, token):
-        result = self.request('GET', location, headers={"x-token": token}).json()
-        return result['name'], result['total']
+    def get_files_number(self, location, token, expected_status=OK):
+        result = self.request('GET', location, headers={"x-token": token}, expected_status=expected_status).json()
+        if expected_status == OK:
+            return result['name'], result['total']
 
     def get_statuses(self, location, token, artifact):
         result = self.request('GET', location, headers={"x-token": token}).json()

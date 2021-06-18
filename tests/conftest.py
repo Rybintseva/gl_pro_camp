@@ -1,8 +1,6 @@
 import json
 import os
-from pathlib import Path
 
-import allure
 import pytest
 import yaml
 

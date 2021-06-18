@@ -8,12 +8,17 @@ BROWSER = os.environ.get('BROWSER')
 BASE_FE_URL = 'https://www.cosmosid.com/'
 BASE_API_URL = 'https://app.cosmosid.com/api/'
 
-USER_NAME = 'gl-procamp-2021@globallogic.com'
+USERNAME = 'gl-procamp-2021@globallogic.com'
 PASSWORD = 'DXdUVEFNpHA8LXm'
-PASSWORD_INVALID = '1DXdUVEFNpHA8LXm'
+USERNAME_INVALID = f'gl{USERNAME}'
+PASSWORD_INVALID = f'1{PASSWORD}'
 
-HEADERS = {"Authorization": f"Basic {utils.get_base64_encoded_string(f'{USER_NAME}:{PASSWORD}')}"}
-HEADERS_INVALID = {"Authorization": f"Basic {utils.get_base64_encoded_string(f'{USER_NAME}:{PASSWORD_INVALID}')}"}
+TOKEN_INVALID = 'e93dce5c-3ddf-4e21-a54b-3d45483250dc'
+
+HEADERS = utils.base64_encode_header(USERNAME, PASSWORD)
+HEADERS_INVALID_USER = utils.base64_encode_header(USERNAME_INVALID, PASSWORD)
+HEADERS_INVALID_PASS = utils.base64_encode_header(USERNAME, PASSWORD_INVALID)
+HEADERS_INVALID_CRED = utils.base64_encode_header(USERNAME_INVALID, PASSWORD_INVALID)
 
 # RESPONSE STATUS CODES
 OK = 200
