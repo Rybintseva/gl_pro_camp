@@ -6,7 +6,7 @@ class ApiClient:
         self.session = Session()
 
     def get(self, url, **kwargs):
-        response = self.session.get(url, **kwargs)
+        response = self.session.get(url, **kwargs).status_code
         return response
 
     def put(self, url, **kwargs):

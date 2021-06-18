@@ -1,12 +1,12 @@
 import allure
 
 from api_client.methods_api import ApiClient
-from core.config import Configuration
+from core.settings import BASE_FE_URL, OK
 
 
 class TestGetMainPage:
     @allure.story('Get Mainpage')
     def test_get_mainpage(self):
         api_page = ApiClient()
-        response = str(api_page.get(Configuration.BASE_URL))
-        assert '200' in response, f'Actual status code: {response}\nExpected: 200.'
+        response = api_page.get(BASE_FE_URL)
+        assert response == OK, f'Actual status code: {response}\nExpected: {OK}.'
