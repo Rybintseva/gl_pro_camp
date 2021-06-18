@@ -11,7 +11,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope='session')
 def browser(request):
-    browser = config.get_config('browser')
+    browser = config.get_config('BROWSER')
     if not browser:
         browser = request.config.getoption('--browser')
     return browser
