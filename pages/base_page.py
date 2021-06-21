@@ -1,4 +1,6 @@
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage:
@@ -20,3 +22,24 @@ class BasePage:
         except NoSuchElementException:
             return False
         return True
+
+    def wait_for_element_appears(self, *locator, delay=30):
+        try:
+            element = WebDriverWait(self.driver, delay).until(ec.visibility_of_element_located(locator))
+        except TimeoutException:
+            raise NoSuchElementException(f'Element does not appear after {delay} seconds.')
+        return element
+
+    def wait_for_element_and_click(self, *locator, delay=30):
+        element = self.wait_for_element_appears(*locator, delay=delay)
+        self.driver.execute_script('arguments[0].scrollIntoView(true);', element)
+        try:
+            element.click()
+        except ElementClickInterceptedException:
+            self.driver.execute_script('arguments[0].click();', element)
+
+    def clear_field_and_fill(self, text, *locator):
+        element = self.wait_for_element_appears(*locator)
+        self.wait_for_element_and_click(*locator)
+        element.clear()
+        element.send_keys(text)

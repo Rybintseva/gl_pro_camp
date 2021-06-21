@@ -77,3 +77,8 @@ def driver(browser, request):
     #     with open(browser_logfile, 'r') as f:
     #         allure.attach(f.read(), 'browser.log', attachment_type=allure.attachment_type.TEXT)
     driver.quit()
+
+
+# @pytest.fixture(scope='function')
+# def logout():
+
