@@ -54,7 +54,7 @@ def token():
 #     return reports_dir
 
 
-@pytest.fixture()
+@pytest.fixture(scope='class')
 def driver(browser, request):
     driver = get_driver(browser)
     driver.implicitly_wait(10)

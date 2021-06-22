@@ -1,4 +1,5 @@
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -41,5 +42,5 @@ class BasePage:
     def clear_field_and_fill(self, text, *locator):
         element = self.wait_for_element_appears(*locator)
         self.wait_for_element_and_click(*locator)
-        element.clear()
+        element.send_keys(Keys.CONTROL, 'a')
         element.send_keys(text)

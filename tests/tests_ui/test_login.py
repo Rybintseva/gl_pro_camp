@@ -8,6 +8,7 @@ from pages.login_page import LoginPage
 class TestLoginPage:
 
     @pytest.mark.ui
+    @pytest.mark.login
     @pytest.mark.smoke
     @pytest.mark.positive
     @allure.story('Validate Login page elements')
@@ -18,6 +19,7 @@ class TestLoginPage:
             assert len(missed_elements) == 0, f'Missed elements on the Login page are: {missed_elements}'
 
     @pytest.mark.ui
+    @pytest.mark.login
     @pytest.mark.regression
     @pytest.mark.negative
     @allure.story('Login with invalid username')
@@ -28,6 +30,7 @@ class TestLoginPage:
             assert login_page.is_error_message(), 'The error message is not shown.'
 
     @pytest.mark.ui
+    @pytest.mark.login
     @pytest.mark.regression
     @pytest.mark.negative
     @allure.story('Login with invalid password')
@@ -38,6 +41,7 @@ class TestLoginPage:
             assert login_page.is_error_message(), 'The error message is not shown.'
 
     @pytest.mark.ui
+    @pytest.mark.login
     @pytest.mark.regression
     @pytest.mark.negative
     @allure.story('Login with invalid username and password')
@@ -48,7 +52,8 @@ class TestLoginPage:
             assert login_page.is_error_message(), 'The error message is not shown.'
 
     @pytest.mark.ui
-    @pytest.mark.regression
+    @pytest.mark.login
+    @pytest.mark.smoke
     @pytest.mark.positive
     @allure.story('Sign In button becomes active')
     def test_login_sign_in_btn_active(self, driver):
@@ -58,6 +63,7 @@ class TestLoginPage:
             assert login_page.is_sign_in_button_active(), 'Sign In button is not active.'
 
     @pytest.mark.ui
+    @pytest.mark.login
     @pytest.mark.smoke
     @pytest.mark.positive
     @allure.story('Successful login')
