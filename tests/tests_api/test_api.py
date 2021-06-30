@@ -90,6 +90,7 @@ class TestApi:
             assert all(status == 'Success' for status in statuses), \
                 f'Actual analysis statuses: {statuses}. Expected: all Success.'
 
+    @pytest.mark.xfail
     @pytest.mark.api
     @pytest.mark.regression
     @pytest.mark.positive
