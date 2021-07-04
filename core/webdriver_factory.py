@@ -8,6 +8,7 @@ from webdriver_manager.opera import OperaDriverManager
 def get_driver(requested_driver: str):
     browsers_dict = {
         'chrome': __get_chrome,
+        'remote_chrome': __get_remote_chrome,
         'firefox': __get_firefox,
         'edge': __get_edge,
         'opera': __get_opera
@@ -21,6 +22,14 @@ def get_driver(requested_driver: str):
 def __get_chrome():
     options = webdriver.ChromeOptions()
     chrome_driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    return chrome_driver
+
+
+def __get_remote_chrome():
+    options = webdriver.ChromeOptions()
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-gpu')
+    chrome_driver = webdriver.Remote("http://selenium:4444/wd/hub", options.to_capabilities())
     return chrome_driver
 
 

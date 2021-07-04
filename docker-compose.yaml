@@ -1,0 +1,19 @@
+version:  "3.7"
+
+services:
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+      - 4444:4444
+    shm_size: '1gb'
+
+  auto-test:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: auto-test
+    volumes:
+      - ./reports:/app/reports
+    depends_on:
+      - selenium
+    entrypoint: pytest tests --browser=remote_chrome --html=report.html
