@@ -63,7 +63,7 @@ Before, make sure there is an [SSH key](https://gitlab.com/profile/keys)
 
 * Docker
 
-### How to run tests from Docker
+## How to run tests from Docker
 
 * Install **Docker**.
 
@@ -75,15 +75,13 @@ On **Linux**: [Create a Unix group called `docker` and add user to it.](https://
 
 `git clone git@github.com:Rybintseva/gl_pro_camp.git`
 
-* Run tests on **Linux**:
+* Install docker-compose using pip:
 
-`bash run_docker.sh`
+`pip install docker-compose`
 
-* Run tests on **Windows**:
+* Run tests using the following command:
 
-`run_docker.cmd`
-
-**Note:** Command should be run from the **project root folder**.
+`docker-compose up`
 
 * Test Report
 
