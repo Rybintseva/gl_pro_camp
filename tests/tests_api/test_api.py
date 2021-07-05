@@ -57,7 +57,9 @@ class TestApi:
     @allure.story('Get files from root folder with invalid x-token')
     def test_get_files_from_root_folder_with_invalid_token(self):
         with allure.step('Get files from root folder with invalid x-token'):
-            self.api.get_files_number(ROOT_FOLDER_LOCATION, TOKEN_INVALID, FORBIDDEN)
+            message = self.api.get_files_number(ROOT_FOLDER_LOCATION, TOKEN_INVALID, FORBIDDEN)
+            assert message == 'Token is missing', \
+                f'Actual message: {message}\nExpected: Token is missing'
 
     @pytest.mark.api
     @pytest.mark.regression
@@ -90,6 +92,7 @@ class TestApi:
             assert all(status == 'Success' for status in statuses), \
                 f'Actual analysis statuses: {statuses}. Expected: all Success.'
 
+    @pytest.mark.xfail
     @pytest.mark.api
     @pytest.mark.regression
     @pytest.mark.positive
