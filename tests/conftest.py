@@ -10,6 +10,7 @@ from core.config import Configuration as config, HOME_PATH
 from core.logger import LOGGER
 from core.settings import HEADERS, USERNAME, PASSWORD
 from core.webdriver_factory import get_driver
+from pages.account_page import AccountPage
 from pages.base_page import BasePage
 from pages.login_page import LoginPage, LoginPageLocators
 
@@ -83,21 +84,22 @@ def driver(browser, request):
     driver.quit()
 
 
-@pytest.fixture(scope='function')
-def login(driver):
+@pytest.fixture(scope='class')
+def account_page(driver):
+    account_page = AccountPage(driver)
+
     def _login():
         login_page = LoginPage(driver)
         with allure.step('Login step'):
             LOGGER.info(f'Login step with {USERNAME} and {PASSWORD}')
         login_page.login(USERNAME, PASSWORD)
-    return _login
+    _login()
 
+    yield account_page
 
-@pytest.fixture(scope='function')
-def logout(driver):
     def _logout():
         logout_page = BasePage(driver)
         with allure.step('Logout step'):
             LOGGER.info('Logout')
         logout_page.wait_for_element_and_click(*LoginPageLocators.LOGOUT_BTN)
-    return _logout
+    _logout()
