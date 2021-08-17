@@ -5,7 +5,8 @@ from utils import utils
 ENV = os.environ.get('ENV')
 BROWSER = os.environ.get('BROWSER')
 
-BASE_FE_URL = 'https://www.cosmosid.com/'
+BASE_FE_URL = 'https://www.cosmosid.com'
+LOGIN_PAGE_URL = 'https://app.cosmosid.com/login'
 BASE_API_URL = 'https://app.cosmosid.com/api/'
 LOGIN_API_URL = f'{BASE_API_URL}v1/login'
 

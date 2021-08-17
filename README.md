@@ -24,7 +24,7 @@ The project contains UI and API tests for [CosmosID](https://www.cosmosid.com/)
 
 Before, make sure there is an [SSH key](https://gitlab.com/profile/keys) in your profile in Gitlab.
 
-`git clone git@github.com:Rybintseva/gl_pro_camp.gitt`
+`git clone git@github.com:Rybintseva/gl_pro_camp.git`
 
 * Run tests in terminal
 
@@ -48,3 +48,8 @@ Before, make sure there is an [SSH key](https://gitlab.com/profile/keys) in your
 2. Create 2-4 API tests for each endpoint
 2.1. Using fixtures/before/aftertests is mandatory
 2.1. Tests shall not contain hardcode
+   
+* Selenium
+1. Create base class
+2. Create some pages
+3. Create some tests
