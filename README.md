@@ -24,7 +24,7 @@ The project contains UI and API tests for [CosmosID](https://www.cosmosid.com/)
 
 Before, make sure there is an [SSH key](https://gitlab.com/profile/keys) in your profile in Gitlab.
 
-`git clone git@github.com:Rybintseva/gl_pro_camp.gitt`
+`git clone git@github.com:Rybintseva/gl_pro_camp.git`
 
 * Run tests in terminal
 
