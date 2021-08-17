@@ -8,6 +8,7 @@ BROWSER = os.environ.get('BROWSER')
 BASE_FE_URL = 'https://www.cosmosid.com'
 LOGIN_PAGE_URL = 'https://app.cosmosid.com/login'
 BASE_API_URL = 'https://app.cosmosid.com/api/'
+LOGIN_API_URL = f'{BASE_API_URL}v1/login'
 
 USERNAME = 'gl-procamp-2021@globallogic.com'
 PASSWORD = 'DXdUVEFNpHA8LXm'
@@ -29,12 +30,12 @@ NOT_FOUND = 404
 
 # ACCOUNT
 ROOT_FOLDER_NAME = 'ROOT'
-ROOT_FOLDER_LOCATION = 'metagenid/v2/files?_=1622700773180'
+ROOT_FOLDER_LOCATION = f'{BASE_API_URL}metagenid/v2/files?_=1622700773180'
 ROOT_FOLDER_NUMBER_FILES = 1
 SPECIFIC_FOLDER_NAME = 'Example_Datasets'
 SPECIFIC_FOLDER_LOCATION = f'{ROOT_FOLDER_LOCATION}&folder_id=84c966d5-8dce-429d-8f92-44d5e28b1581'
 SPECIFIC_FOLDER_NUMBER_FILES = 58
 
-RUNS = 'metagenid/v1/files/7f4c7326-0a4e-4b56-a8d0-8ce002191672/runs?_=1622700773181'
-ANALYSIS = 'metagenid/v1/runs/437ef8e4-b595-4fd8-a2f5-64221831e925/analysis?filter=total&_=1622700773184'
-ARTIFACTS = 'metagenid/v1/runs/437ef8e4-b595-4fd8-a2f5-64221831e925/artifacts?_=1622700773185'
+RUNS = f'{BASE_API_URL}metagenid/v1/files/7f4c7326-0a4e-4b56-a8d0-8ce002191672/runs?_=1622700773181'
+ANALYSIS = f'{BASE_API_URL}metagenid/v1/runs/437ef8e4-b595-4fd8-a2f5-64221831e925/analysis?filter=total&_=1622700773184'
+ARTIFACTS = f'{BASE_API_URL}metagenid/v1/runs/437ef8e4-b595-4fd8-a2f5-64221831e925/artifacts?_=1622700773185'
