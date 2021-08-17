@@ -49,7 +49,7 @@ def token():
     return token
 
 
-@pytest.fixture()
+@pytest.fixture(scope='class')
 def driver(browser):
     driver = get_driver(browser)
     driver.implicitly_wait(10)
