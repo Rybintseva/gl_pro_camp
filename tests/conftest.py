@@ -1,6 +1,11 @@
-import pytest
+import json
+import os
 
-from core.config import Configuration as config
+import pytest
+import yaml
+
+from api_client.methods_api import ApiClient
+from core.config import Configuration as config, HOME_PATH
 from core.webdriver_factory import get_driver
 
 
@@ -15,6 +20,27 @@ def browser(request):
     if not browser:
         browser = request.config.getoption('--browser')
     return browser
+
+
+@pytest.fixture(scope='session')
+def config_data():
+    with open(os.path.join(HOME_PATH, 'core', 'config.yaml'), encoding='utf-8') as yaml_file:
+        data = yaml.load(yaml_file)
+    return data
+
+
+@pytest.fixture(scope='session')
+def user_data():
+    with open(os.path.join(HOME_PATH, 'data', 'user_data.json'), encoding='utf-8') as json_file:
+        data = json.load(json_file)
+    return data
+
+
+@pytest.fixture(scope='session')
+def token():
+    api = ApiClient()
+    token = api.get_token()
+    return token
 
 
 @pytest.fixture()
