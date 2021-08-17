@@ -5,7 +5,7 @@ from pages.base_page import BasePage
 
 
 class MainPageLocators:
-    BLOCK_TITLE = By.XPATH, '//h1[text()="Need Metagenomics Analysis?"]'
+    BLOCK_TITLE = By.XPATH, '(//h1//span[text()="Unlocking the Microbiome"])[1]'
 
 
 class MainPage(BasePage):
